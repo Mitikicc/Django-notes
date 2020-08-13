@@ -67,7 +67,7 @@ python manage.py runserver 0.0.0.0:80
 
 浏览器输入http://127.0.0.1/即可访问，访问成功会有小火箭页面。另外注意此时不能关闭cmd窗口，不然网站就停止运行了。
 
-## 创建投票应用
+## 第一部分，创建投票应用
 
 在 Django 中，每一个应用都是一个 Python 包，所谓python包就是包含了`__init__.py`的头文件，是一个文件夹，里面存放了很多py文件，也就是模块。
 
@@ -154,7 +154,7 @@ urlpatterns = [
 py manage.py runserver 0.0.0.0:80
 ```
 
-输入网址：http://127.0.0.1/polls/会返回我们在`polls/views.py`中定义的index中的内容。
+输入网址：http://127.0.0.1/polls/  会返回我们在`polls/views.py`中定义的index中的内容。
 
 如果输入的运行服务器命令是：
 
@@ -163,4 +163,33 @@ py manage.py runserver
 ```
 
 那么就要输入网址：http://localhost:8000/polls/
+
+## 第二部分，运行数据库
+
+打开`mysite\settings.py`,查看`INSTALLED_APPS`设置项
+
+ [`INSTALLED_APPS`](https://docs.djangoproject.com/zh-hans/3.0/ref/settings/#std:setting-INSTALLED_APPS) 默认包括了以下 Django 的自带应用：
+
+- [`django.contrib.admin`](https://docs.djangoproject.com/zh-hans/3.0/ref/contrib/admin/#module-django.contrib.admin) -- 管理员站点。
+- [`django.contrib.auth`](https://docs.djangoproject.com/zh-hans/3.0/topics/auth/#module-django.contrib.auth) -- 认证授权系统。
+- [`django.contrib.contenttypes`](https://docs.djangoproject.com/zh-hans/3.0/ref/contrib/contenttypes/#module-django.contrib.contenttypes) -- 内容类型框架。
+- [`django.contrib.sessions`](https://docs.djangoproject.com/zh-hans/3.0/topics/http/sessions/#module-django.contrib.sessions) -- 会话框架。
+- [`django.contrib.messages`](https://docs.djangoproject.com/zh-hans/3.0/ref/contrib/messages/#module-django.contrib.messages) -- 消息框架。
+- [`django.contrib.staticfiles`](https://docs.djangoproject.com/zh-hans/3.0/ref/contrib/staticfiles/#module-django.contrib.staticfiles) -- 管理静态文件的框架。
+
+
+
+默认开启的某些应用需要至少一个数据表，所以，在使用他们之前需要在数据库中创建一些表。
+
+```
+python manage.py migrate
+```
+
+执行以后会创建数据库表，大小为128kb。
+
+### 创建模型
+
+```
+
+```
 
